@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "title": "Dark Storm",
+    "image": "1.jpg",
+    "genre": "drama",
+    "rating": "8.3",
+    "year": 2023,
+    "duration": 118,
+    "age_rating": "PG-13",
+    "description": "An intense drama about a family caught in an unexpected crisis."
+  },
+  {
+    "id": 2,
+    "title": "Whisper of Fate",
+    "image": "2.jpg",
+    "genre": "fantasy",
+    "rating": "7.7",
+    "year": 2021,
+    "duration": 104,
+    "age_rating": "PG",
+    "description": "A young man discovers an ancient power that could change his destiny."
+  },
+  {
+    "id": 3,
+    "title": "Beyond the Edge",
+    "image": "3.jpg",
+    "genre": "horror",
+    "rating": "6.3",
+    "year": 2019,
+    "duration": 96,
+    "age_rating": "R",
+    "description": "A group of friends enters a forbidden area with terrifying consequences."
+  },
+  {
+    "id": 4,
+    "title": "Lost in Shadows",
+    "image": "4.jpg",
+    "genre": "action",
+    "rating": "9.3",
+    "year": 2024,
+    "duration": 130,
+    "age_rating": "PG-13",
+    "description": "An agent hunts down a hidden organization that controls the city."
+  },
+  {
+    "id": 5,
+    "title": "Echoes of Power",
+    "image": "5.jpg",
+    "genre": "fantasy",
+    "rating": "6.9",
+    "year": 2020,
+    "duration": 112,
+    "age_rating": "PG",
+    "description": "A magical world is threatened by the awakening of an ancient force."
+  },
+  {
+    "id": 6,
+    "title": "Grim Reckoning",
+    "image": "6.jpg",
+    "genre": "drama",
+    "rating": "8.4",
+    "year": 2022,
+    "duration": 121,
+    "age_rating": "PG-13",
+    "description": "A detective struggles with his past while solving a painful case."
+  },
+  {
+    "id": 7,
+    "title": "Fury's Flight",
+    "image": "7.jpg",
+    "genre": "action",
+    "rating": "9.8",
+    "year": 2025,
+    "duration": 124,
+    "age_rating": "PG-13",
+    "description": "A skilled pilot risks her life on an impossible mission."
+  },
+  {
+    "id": 8,
+    "title": "Path of the Forgotten",
+    "image": "8.jpg",
+    "genre": "action",
+    "rating": "7.2",
+    "year": 2021,
+    "duration": 109,
+    "age_rating": "PG-13",
+    "description": "A mercenary uncovers the secrets of an abandoned village."
+  },
+  {
+    "id": 9,
+    "title": "Nightmare's Threshold",
+    "image": "9.jpg",
+    "genre": "horror",
+    "rating": "1.7",
+    "year": 2018,
+    "duration": 88,
+    "age_rating": "R",
+    "description": "Reality unravels for a woman haunted by relentless nightmares."
+  },
+  {
+    "id": 10,
+    "title": "Eternal Hunt",
+    "image": "10.jpg",
+    "genre": "fantasy",
+    "rating": "7.5",
+    "year": 2022,
+    "duration": 115,
+    "age_rating": "PG",
+    "description": "A warrior pursues a legendary creature that destroyed his tribe."
+  },
+  {
+    "id": 11,
+    "title": "Legacy of the Void",
+    "image": "11.jpg",
+    "genre": "action",
+    "rating": "8.5",
+    "year": 2024,
+    "duration": 128,
+    "age_rating": "PG-13",
+    "description": "A hero is drawn into the heart of a global conspiracy."
+  },
+  {
+    "id": 12,
+    "title": "Shadow's Crescent",
+    "image": "12.jpg",
+    "genre": "horror",
+    "rating": "7.5",
+    "year": 2020,
+    "duration": 101,
+    "age_rating": "R",
+    "description": "A blood-red moon brings a nightmare creature to a remote town."
+  },
+  {
+    "id": 13,
+    "title": "Crimson Dawn",
+    "image": "13.jpg",
+    "genre": "fantasy",
+    "rating": "8.4",
+    "year": 2023,
+    "duration": 119,
+    "age_rating": "PG-13",
+    "description": "A magical realm is pushed toward war by rising dark forces."
+  },
+  {
+    "id": 14,
+    "title": "Silent Kingdom",
+    "image": "14.jpg",
+    "genre": "fantasy",
+    "rating": "6.5",
+    "year": 2019,
+    "duration": 107,
+    "age_rating": "PG",
+    "description": "A mute prince must save a kingdom in peril."
+  },
+  {
+    "id": 15,
+    "title": "Mystic Rite",
+    "image": "15.jpg",
+    "genre": "fantasy",
+    "rating": "9.8",
+    "year": 2025,
+    "duration": 122,
+    "age_rating": "PG-13",
+    "description": "A young woman becomes the key to an ancient ritual that could save the world."
+  },
+  {
+    "id": 16,
+    "title": "Reign of the Lost",
+    "image": "16.jpg",
+    "genre": "horror",
+    "rating": "9.1",
+    "year": 2023,
+    "duration": 113,
+    "age_rating": "R",
+    "description": "Mysterious disappearances lead to the discovery of a sinister cult."
+  },
+  {
+    "id": 17,
+    "title": "Timeless Myth",
+    "image": "17.jpg",
+    "genre": "drama",
+    "rating": "4.0",
+    "year": 2020,
+    "duration": 102,
+    "age_rating": "PG",
+    "description": "A writer struggles to rediscover his lost inspiration."
+  },
+  {
+    "id": 18,
+    "title": "Oath of the Fallen",
+    "image": "18.jpg",
+    "genre": "fantasy",
+    "rating": "6.3",
+    "year": 2018,
+    "duration": 111,
+    "age_rating": "PG-13",
+    "description": "A disgraced knight seeks redemption in a mystical world."
+  },
+  {
+    "id": 19,
+    "title": "Veil of Night",
+    "image": "19.jpg",
+    "genre": "drama",
+    "rating": "9.5",
+    "year": 2024,
+    "duration": 126,
+    "age_rating": "PG-13",
+    "description": "An emotional story about loss, healing, and resilience."
+  },
+  {
+    "id": 20,
+    "title": "Guardians of Twilight",
+    "image": "20.jpg",
+    "genre": "horror",
+    "rating": "7.4",
+    "year": 2021,
+    "duration": 110,
+    "age_rating": "R",
+    "description": "A dark city hides creatures that emerge only at dusk."
+  }
+]

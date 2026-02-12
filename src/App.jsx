@@ -10,6 +10,13 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 function App() {
     const [movies, setMovies] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
+    const [loading, setLoading] = useState([true]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+    }, []);
 
     useEffect(() => {
         fetch('movies.json')
@@ -24,6 +31,10 @@ function App() {
                 : [...prev, movieId],
         );
     };
+
+    if (loading) {
+        return <h2>Loading the movies ...</h2>;
+    }
 
     return (
         <div className='App'>

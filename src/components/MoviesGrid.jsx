@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../styles.css';
 import MovieCard from './MovieCard';
 import Modal from './Modal';
@@ -10,6 +10,18 @@ export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
 
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+
+    const [loading, setLoading] = useState([true]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+    }, []);
+
+    if (loading) {
+        return <h2>Loading the movies ...</h2>;
+    }
 
     const openModal = (movie) => {
         setSelectedMovie(movie);

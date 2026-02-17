@@ -1,19 +1,17 @@
 import './App.css';
 import './styles.css';
 import {useState, useEffect} from 'react';
+import {NavLink, Outlet} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import MoviesGrid from './components/MoviesGrid';
-import Watchlist from './components/WatchList';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
-function App() {
+export default function App() {
     const [movies, setMovies] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
 
     useEffect(() => {
         fetch('movies.json')
-            .then((response) => response.json())
+            .then((r) => r.json())
             .then((data) => setMovies(data));
     }, []);
 
@@ -26,47 +24,34 @@ function App() {
     };
 
     return (
-        <div className='App'>
-            <div className='container'>
-                <Header></Header>
-                <Router>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to='/'>Home</Link>
-                            </li>
-                            <li>
-                                <Link to='/watchlist'>Watchlist</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    <Routes>
-                        <Route
-                            path='/'
-                            element={
-                                <MoviesGrid
-                                    movies={movies}
-                                    watchlist={watchlist}
-                                    toggleWatchlist={toggleWatchlist}
-                                ></MoviesGrid>
-                            }
-                        ></Route>
-                        <Route
-                            path='/watchlist'
-                            element={
-                                <Watchlist
-                                    watchlist={watchlist}
-                                    movies={movies}
-                                    toggleWatchlist={toggleWatchlist}
-                                ></Watchlist>
-                            }
-                        ></Route>
-                    </Routes>
-                </Router>
-            </div>
-            <Footer></Footer>
-        </div>
+        <>
+            <Header>
+                <nav className='nav'>
+                    <NavLink
+                        to='/movies'
+                        className={({isActive}) =>
+                            'nav-link' + (isActive ? ' active' : '')
+                        }
+                    >
+                        Movies
+                    </NavLink>
+
+                    <NavLink
+                        to='/watchlist'
+                        className={({isActive}) =>
+                            'nav-link' + (isActive ? ' active' : '')
+                        }
+                    >
+                        Watchlist
+                    </NavLink>
+                </nav>
+            </Header>
+
+            <main>
+                <Outlet context={{movies, watchlist, toggleWatchlist}} />
+            </main>
+
+            <Footer />
+        </>
     );
 }
-
-export default App;

@@ -1,84 +1,84 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {useOutletContext, useSearchParams, Link} from 'react-router-dom';
 import '../styles.css';
 import MovieCard from './MovieCard';
 import Modal from './Modal';
 
-export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [genre, setGenre] = useState('All Genres');
-    const [rating, setRating] = useState('All Ratings');
+export default function MoviesGrid() {
+    const {movies, watchlist, toggleWatchlist} = useOutletContext();
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const [selectedMovie, setSelectedMovie] = useState(null);
-    const [isModalOpen, setModalOpen] = useState(false);
+    const search = searchParams.get('search') ?? '';
+    const genre = searchParams.get('genre') ?? 'All Genres';
+    const rating = searchParams.get('rating') ?? 'All Ratings';
 
-    const [loading, setLoading] = useState([true]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 1500);
-    }, []);
-
-    if (loading) {
-        return <h2>Loading the movies ...</h2>;
-    }
+    const [selectedMovie, setSelectedMovie] = React.useState(null);
+    const [isModalOpen, setModalOpen] = React.useState(false);
 
     const openModal = (movie) => {
         setSelectedMovie(movie);
         setModalOpen(true);
     };
-
     const closeModal = () => {
         setModalOpen(false);
         setSelectedMovie(null);
     };
 
     const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
+        const v = e.target.value;
+        setSearchParams((prev) => {
+            const next = new URLSearchParams(prev);
+            if (v) next.set('search', v);
+            else next.delete('search');
+            return next;
+        });
     };
 
     const handleGenreChange = (e) => {
-        setGenre(e.target.value);
+        const v = e.target.value;
+        setSearchParams((prev) => {
+            const next = new URLSearchParams(prev);
+            if (v && v !== 'All Genres') next.set('genre', v);
+            else next.delete('genre');
+            return next;
+        });
     };
 
     const handleRatingChange = (e) => {
-        setRating(e.target.value);
+        const v = e.target.value;
+        setSearchParams((prev) => {
+            const next = new URLSearchParams(prev);
+            if (v && v !== 'All Ratings') next.set('rating', v);
+            else next.delete('rating');
+            return next;
+        });
     };
 
-    const matchesRating = (movie, rating) => {
-        switch (rating) {
-            case 'All Ratings':
-                return true;
+    const matchesRating = (movie, r) => {
+        switch (r) {
             case 'Good':
                 return movie.rating >= 8;
-
             case 'Ok':
                 return movie.rating >= 5 && movie.rating < 8;
-
             case 'Bad':
                 return movie.rating < 5;
-
+            case 'All Ratings':
             default:
-                return false;
+                return true;
         }
     };
 
-    const matchesSearchTerm = (movie, searchTerm) => {
-        return movie.title.toLowerCase().includes(searchTerm.toLowerCase());
-    };
+    const matchesSearch = (movie, term) =>
+        movie.title.toLowerCase().includes(term.toLowerCase());
 
-    const matchesGenre = (movie, genre) => {
-        return (
-            genre === 'All Genres' ||
-            movie.genre.toLowerCase() === genre.toLowerCase()
-        );
-    };
+    const matchesGenre = (movie, g) =>
+        g === 'All Genres' || movie.genre.toLowerCase() === g.toLowerCase();
 
     const filteredMovies = movies.filter(
-        (movie) =>
-            matchesGenre(movie, genre) &&
-            matchesRating(movie, rating) &&
-            matchesSearchTerm(movie, searchTerm),
+        (m) =>
+            matchesGenre(m, genre) &&
+            matchesRating(m, rating) &&
+            matchesSearch(m, search),
     );
 
     return (
@@ -87,9 +87,10 @@ export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
                 type='text'
                 className='search-input'
                 placeholder='Search movies...'
-                value={searchTerm}
+                value={search}
                 onChange={handleSearchChange}
             />
+
             <div className='filter-bar'>
                 <div className='filter-slot'>
                     <label>Genre</label>
@@ -105,6 +106,7 @@ export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
                         <option>Horror</option>
                     </select>
                 </div>
+
                 <div className='filter-slot'>
                     <label>Rating</label>
                     <select
@@ -122,13 +124,22 @@ export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
 
             <div className='movies-grid'>
                 {filteredMovies.map((movie) => (
-                    <MovieCard
-                        movie={movie}
-                        key={movie.id}
-                        toggleWatchlist={toggleWatchlist}
-                        isWatchlisted={watchlist.includes(movie.id)}
-                        onClick={() => openModal(movie)}
-                    ></MovieCard>
+                    <div key={movie.id}>
+                        <MovieCard
+                            movie={movie}
+                            toggleWatchlist={toggleWatchlist}
+                            isWatchlisted={watchlist.includes(movie.id)}
+                            onClick={() => openModal(movie)}
+                            children={
+                                <Link
+                                    className='movie-card-title'
+                                    to={`/movies/${movie.id}`}
+                                >
+                                    View All Details
+                                </Link>
+                            }
+                        />
+                    </div>
                 ))}
             </div>
 
@@ -137,17 +148,16 @@ export default function MoviesGrid({movies, watchlist, toggleWatchlist}) {
                     <div>
                         <img
                             className='modal-content img'
-                            src={`images/${selectedMovie.image}`}
+                            src={`/images/${selectedMovie.image}`}
                             alt={selectedMovie.title}
-                        ></img>
-
+                        />
                         <h2>{selectedMovie.title}</h2>
-
                         <p className='modal-content-info'>
                             <strong>Year:</strong> {selectedMovie.year}
                         </p>
                         <p className='modal-content-info'>
-                            <strong>Duration:</strong> {selectedMovie.duration}
+                            <strong>Duration:</strong> {selectedMovie.duration}{' '}
+                            <strong>min</strong>
                         </p>
                         <p className='modal-content-info'>
                             <strong>Age-Rating:</strong>{' '}

@@ -6,6 +6,7 @@ export default function MovieCard({
     isWatchlisted,
     toggleWatchlist,
     onClick,
+    children,
 }) {
     const handleError = (e) => {
         e.target.src = 'images/default.jpg';
@@ -51,6 +52,7 @@ export default function MovieCard({
                         </span>
                     </label>
                 </div>
+                <div> {children} </div>
             </div>
         </div>
     );

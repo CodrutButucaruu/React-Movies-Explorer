@@ -15,6 +15,9 @@ export default function Watchlist() {
             <div className='watchlist'>
                 {watchlist.map((id) => {
                     const movie = movies.find((movie) => movie.id === id);
+                    if (!movie) {
+                        return null;
+                    }
                     return (
                         <MovieCard
                             key={id}

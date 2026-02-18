@@ -54,6 +54,12 @@ export default function MoviesGrid() {
         });
     };
 
+    const matchesSearch = (movie, term) =>
+        movie.title.toLowerCase().includes(term.toLowerCase());
+
+    const matchesGenre = (movie, g) =>
+        g === 'All Genres' || movie.genre.toLowerCase() === g.toLowerCase();
+
     const matchesRating = (movie, r) => {
         switch (r) {
             case 'Good':
@@ -67,12 +73,6 @@ export default function MoviesGrid() {
                 return true;
         }
     };
-
-    const matchesSearch = (movie, term) =>
-        movie.title.toLowerCase().includes(term.toLowerCase());
-
-    const matchesGenre = (movie, g) =>
-        g === 'All Genres' || movie.genre.toLowerCase() === g.toLowerCase();
 
     const filteredMovies = movies.filter(
         (m) =>

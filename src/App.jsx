@@ -12,7 +12,8 @@ export default function App() {
     useEffect(() => {
         fetch('movies.json')
             .then((r) => r.json())
-            .then((data) => setMovies(data));
+            .then((data) => setMovies(data))
+            .catch((error) => console.error(error));
     }, []);
 
     const toggleWatchlist = (movieId) => {

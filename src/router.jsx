@@ -3,6 +3,7 @@ import App from './App';
 import MoviesGrid from './components/MoviesGrid';
 import Watchlist from './components/WatchList';
 import MoviePanel from './components/MoviePanel';
+import NotFound from './components/NotFound';
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: 'movies/:id',
                 element: <MoviePanel />,
+            },
+            {
+                path: '*',
+                element: <NotFound />,
             },
         ],
     },
